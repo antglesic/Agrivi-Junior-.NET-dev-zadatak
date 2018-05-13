@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="agriviDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Spojevi">
+          <Key>
+            <PropertyRef Name="idSpoja" />
+          </Key>
+          <Property Name="idSpoja" Type="int" Nullable="false" />
+          <Property Name="nazivSpoja" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="vodik" Type="int" Nullable="false" />
+          <Property Name="ugljik" Type="int" Nullable="false" />
+          <Property Name="dusik" Type="int" Nullable="false" />
+          <Property Name="natrij" Type="int" Nullable="false" />
+          <Property Name="kisik" Type="int" />
+        </EntityType>
+        <EntityContainer Name="agriviDBModelStoreContainer">
+          <EntitySet Name="Spojevi" EntityType="Self.Spojevi" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="agriviDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Spojevi">
+          <Key>
+            <PropertyRef Name="idSpoja" />
+          </Key>
+          <Property Name="idSpoja" Type="Int32" Nullable="false" />
+          <Property Name="nazivSpoja" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="vodik" Type="Int32" Nullable="false" />
+          <Property Name="ugljik" Type="Int32" Nullable="false" />
+          <Property Name="dusik" Type="Int32" Nullable="false" />
+          <Property Name="natrij" Type="Int32" Nullable="false" />
+          <Property Name="kisik" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="agriviDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Spojevi" EntityType="Self.Spojevi" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="agriviDBModelStoreContainer" CdmEntityContainer="agriviDBEntities">
+          <EntitySetMapping Name="Spojevi">
+            <EntityTypeMapping TypeName="agriviDBModel.Spojevi">
+              <MappingFragment StoreEntitySet="Spojevi">
+                <ScalarProperty Name="idSpoja" ColumnName="idSpoja" />
+                <ScalarProperty Name="nazivSpoja" ColumnName="nazivSpoja" />
+                <ScalarProperty Name="vodik" ColumnName="vodik" />
+                <ScalarProperty Name="ugljik" ColumnName="ugljik" />
+                <ScalarProperty Name="dusik" ColumnName="dusik" />
+                <ScalarProperty Name="natrij" ColumnName="natrij" />
+                <ScalarProperty Name="kisik" ColumnName="kisik" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

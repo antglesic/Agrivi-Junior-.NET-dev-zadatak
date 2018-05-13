@@ -1,0 +1,63 @@
+﻿@model agriviTestApp.Models.SpojeviViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+
+<div class="container" style="margin-top: 3%;">
+    <a href="#" class="btn btn-info" onclick="AddNew(0)">Add new</a><br /><br />
+    <table id="tableId" class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Hydrogen</th>
+                <th>Carbon</th>
+                <th>Nitrogen</th>
+                <th>Sodium</th>
+                <th>Oxygen</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody id="setList">
+            <tr id="status" style="color:red;"></tr>
+        </tbody>
+    </table>
+</div>
+
+<link href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet" />
+<script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+        $("#tableId").DataTable();
+    });
+
+    $("status").html("Loading...");
+    $.get("/Home/GetList", null, DataBind);
+    function DataBind(ItemList) {
+        var setData = $("#setList");
+        for (var i = 0; i < ItemList.length; i++) {
+            var data = "<tr class='row_" + ItemList[i].idSpoja + "'>" +
+                "<td>" + ItemList[i].idSpoja + "</td>" +
+                "<td>" + ItemList[i].nazivSpoja + "</td>" +
+                "<td>" + ItemList[i].vodik + "</td>" +
+                "<td>" + ItemList[i].ugljik + "</td>" +
+                "<td>" + ItemList[i].dusik + "</td>" +
+                "<td>" + ItemList[i].natrij + "</td>" +
+                "<td>" + ItemList[i].kisik + "</td>" +
+                "<td>" + "<a href='#' class='btn btn-warning' onclick='Edit(" + ItemList[i].idSpoja + ")'><span class='glyphicon glyphicon-edit'></span></a>" + "</td>" +
+                "<td>" + "<a href='#' class='btn btn-danger' onclick='Delete(" + ItemList[i].idSpoja + ")'><span class='glyphicon glyphicon-trash'></span></a>" + "</td>" +
+                "</tr>";
+            setData.append(data);
+            $("#status").html(" ");
+        }
+    }
+
+</script>

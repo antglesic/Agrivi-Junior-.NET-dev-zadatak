@@ -1,0 +1,65 @@
+﻿@model agriviTestApp.Models.Spojevi
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("AddOrEdit", "compounds", FormMethod.Post, new { onsubmit = "return SubmitForm(this)" }))
+{
+    @Html.HiddenFor(model => model.idSpoja)
+    <div class="form-group">
+        @Html.TextBoxFor(model => model.nazivSpoja, new { @id = "naziv",@class = "form-control", @placeholder = "Compound name" })
+        @Html.ValidationMessageFor(model => model.nazivSpoja)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.vodik, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.vodik, new { @id = "vodik", @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.ugljik, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.ugljik, new { @id = "ugljik", @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.dusik, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.dusik, new { @id = "dusik", @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.natrij, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.natrij, new { @id = "natrij", @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.kisik, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.kisik, new { @id = "kisik", @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <input id="submit" type="submit" value="Submit" class="btn btn-primary" />
+        <input type="reset" value="Reset" class="btn btn-warning" />
+    </div>
+}
+
+
+<script>
+    $(document).ready(function () {
+        $("#submit").prop("disabled", true);
+        $(document).keyup(function () {
+            var brojac = 0;
+            var hydrogen = $("#vodik").val();
+            var carbon = $("#ugljik").val();
+            var nitrogen = $("#dusik").val();
+            var sodium = $("#natrij").val();
+            var oxygen = $("#kisik").val();
+
+            if (hydrogen > 0) brojac++;
+            if (carbon > 0) brojac++;
+            if (nitrogen > 0) brojac++;
+            if (sodium > 0) brojac++;
+            if (oxygen > 0) brojac++;
+
+            if (brojac >= 2) {
+                $("#submit").prop("disabled", false);
+            }
+        });
+    });
+    
+    
+
+</script>
